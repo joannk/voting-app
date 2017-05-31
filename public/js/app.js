@@ -1,17 +1,13 @@
 class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       products: [],
     };
-    this.handleProductUpvote = this.handleProductUpvote.bind(this);
-  }
 
   componentDidMount() {
     this.setState({ products: Seed.products });
   }
 
-  handleProductUpvote(productId) {
+  handleProductUpvote = (productId) => {
     const nextProducts = this.state.products.map((product) => {
       if (product.id === productId) {
         return Object.assign({}, product, {
@@ -54,15 +50,9 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleUpvote = this.handleUpvote.bind(this);
-  }
-
-  handleUpvote() {
-    this.props.onVote(this.props.id);
-  }
+  handleUpvote = () => (
+    this.props.onVote(this.props.id)
+  );
 
   render() {
     return (
